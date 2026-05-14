@@ -18,10 +18,10 @@ A python script that runs through an excel sheet and creates a column with a dis
 - see your updated file
 
 ## Improvements
-# Needed Improvements:
+### Needed Improvements:
 - add user interface to select certain cells to be updated
-# Extra improvements:
+### Extra improvements:
 - add labels and customization for the chart
 - customization 
 
-## I used this python tutorial to help me: https://www.youtube.com/watch?v=_uQrJ0TkZlc
+#### I used this python tutorial to help me: https://www.youtube.com/watch?v=_uQrJ0TkZlc
