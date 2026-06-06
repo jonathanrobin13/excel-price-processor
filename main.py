@@ -30,13 +30,13 @@ discount_file = fc.Discount(filename=file, sheet_name=sheet, min_row=min_row,
 if decision == 0:
     fixed_discount = float(input(
         'By what amount do you want to discount the value? (type as a decimal) '))
-    fc.Discount.fixed_discount(fixed_discount)
+    discount_file.fixed_discount(fixed_discount)
 
 
 elif decision == 1:
     percent = float(input(
         'By what percent do you want to discount the value? (type as a decimal) '))
-    fc.Discount.percentage_discount(percent)
+    discount_file.percentage_discount(percent)
 
 
 print("Done!")
