@@ -19,6 +19,7 @@ class Discount:
 
         subtracted_price = 1.0 - float(percent_discount)
 
+        # Goes through each cell and creates a new cell with the discounted value
         for row in range(self.min_row, self.max_row + 1):
             cell = sheet.cell(row, self.old_column)
             corrected_price = float(cell.value) * subtracted_price
@@ -39,6 +40,17 @@ class Discount:
             new_cell.value = corrected_price
 
         wb.save(self.filename)
+
+
+def column_finder(column):
+    alphabet_list = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K',
+                     'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+
+    column = column.capitalize()
+
+    # adds 1 because the index starts at 0 but the column starts at one
+    column_number = alphabet_list.index(column) + 1
+    return column_number
 
 
 # a min price and a max price finder for later
