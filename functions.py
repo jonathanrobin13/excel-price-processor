@@ -2,20 +2,46 @@ import openpyxl as xl
 from openpyxl.chart import BarChart, Reference
 
 
-def update_price(filename, sheet_name, min_row, max_row, percent_discount, old_column, new_column):
+class Discount:
 
-    wb = xl.load_workbook(filename)
-    sheet = wb[sheet_name]
+    def __init__(self, filename, sheet_name, min_row, max_row, old_column, new_column):
+        self.filename = filename
+        self.sheet_name = sheet_name
+        self.min_row = min_row
+        self.max_row = max_row
+        self.old_column = old_column
+        self.new_column = new_column
 
-    subtracted_price = 1.0 - float(percent_discount)
+    def percentage_discount(self, percent_discount):
 
-    for row in range(min_row, max_row + 1):
-        cell = sheet.cell(row, old_column)
-        corrected_price = float(cell.value) * subtracted_price
-        corrected_price_cell = sheet.cell(row, new_column)
-        corrected_price_cell.value = corrected_price
+        wb = xl.load_workbook(self.filename)
+        sheet = wb[self.sheet_name]
 
-    wb.save(filename)
+        subtracted_price = 1.0 - float(percent_discount)
+
+        for row in range(self.min_row, self.max_row + 1):
+            cell = sheet.cell(row, self.old_column)
+            corrected_price = float(cell.value) * subtracted_price
+            corrected_price_cell = sheet.cell(row, self.new_column)
+            corrected_price_cell.value = corrected_price
+
+        wb.save(self.filename)
+
+    def fixed_discount(self, fixed_discount):
+
+        wb = xl.load_workbook(self.filename)
+        sheet = wb[self.sheet_name]
+
+        for row in range(self.min_row, self.max_row + 1):
+            cell = sheet.cell(row, self.old_column)
+            corrected_price = float(cell.value) - fixed_discount
+            new_cell = sheet.cell(row, self.new_column)
+            new_cell.value = corrected_price
+
+        wb.save(self.filename)
+
+
+# a min price and a max price finder for later
 
 
 # Different Function for later
