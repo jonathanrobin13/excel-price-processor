@@ -7,6 +7,10 @@ A python script that runs through an excel sheet and creates a column with a dis
 * Navigate to the folder: Type in terminal: cd excel_price_processor
 * Download library: Then type: pip install -r requirements.txt
 
+## Requirements 
+* Python Interpreter: 3.10+ 
+* openpyxl: if you typed "pip install -r requirements.txt", then your fine
+
 ## How to use it
 - Have an excel file (make sure it is downloaded on your computer)
 - run the main.py 
@@ -18,10 +22,13 @@ A python script that runs through an excel sheet and creates a column with a dis
 - see your updated file
 
 ## Improvements
-### Needed Improvements:
-- add user interface to select certain cells to be updated
-### Extra improvements:
 - add labels and customization for the chart
 - customization 
+- make an app
 
-#### I used this python tutorial to help me: https://www.youtube.com/watch?v=_uQrJ0TkZlc
+## Credits 
+### AI
+* I did use ChatGPT only for ideas, helping me solve errors, and helping me understand python more
+* There was a branch that was made because I was trying out the new Agents Window in VS code for the first time, but no code was created.
+
+### I used this python tutorial to help me: https://www.youtube.com/watch?v=_uQrJ0TkZlc
