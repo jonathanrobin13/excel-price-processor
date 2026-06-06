@@ -14,13 +14,13 @@ file = input('What excel file should be edited? (<file>.xlsx) ')
 sheet = input('What sheet should be edited? (ex. Sheet1) ')
 
 min_row = int(input(
-    'What is the minimum row of your data that should be edited? (ex. 2) '))
+    'What is the minimum row of your data that has the prices? (ex. 2) '))
 max_row = int(input(
-    'What is the maximum row of you data that should be edited? (ex. 4) '))
+    'What is the maximum row of you data that has the prices? (ex. 4) '))
 old_col = int(input(
     'What is the old column of your data that has the original prices? (ex. 2) '))
 new_col = int(input(
-    'What is the new column of your data that should have the new prices? (ex. 3) '))
+    'What is the new column of your data that should have the new discounted prices? (ex. 3) '))
 
 
 # Create a new instance of dicount
