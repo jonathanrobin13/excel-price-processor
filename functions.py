@@ -2,7 +2,7 @@ import openpyxl as xl
 from openpyxl.chart import BarChart, Reference
 
 
-class Discount:
+class Price:
 
     def __init__(self, filename, sheet_name, min_row, max_row, old_column, new_column):
         self.filename = filename
