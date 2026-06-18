@@ -47,14 +47,15 @@ class Price:
 
 # decision finds whether the user wants to find min or max
 
+
     def min_max_finder(self, decision):
 
         wb = xl.load_workbook(self.filename)
         sheet = wb[self.sheet_name]
 
-        min = 0
+        min_price = 0
         min_product_name = ""
-        max = 0
+        max_price = 0
         max_product_name = ""
 
         if decision == 0:  # if user asks for min
@@ -64,21 +65,24 @@ class Price:
 
                 # if this is the first iteration, make the first value as the minimum
                 if row == self.min_row:
-                    min = cell.value
+                    min_price = cell.value
                     # Makes the product name for the minimum value
                     min_product_cell = sheet.cell(row, self.product_name_col)
                     min_product_name = min_product_cell.value
 
                 else:
-                    # sets the new min
-                    new_min = min(min, cell.value)
+                    # finds which cell is the minimum
+                    new_min = min(min_price, cell.value)
 
                     if new_min == cell.value:
-                        min = cell.value
-                    min_product_cell = sheet.cell(row, self.product_name_col)
-                    min_product_name = min_product_cell.value
+                        min_price = cell.value
+                        min_product_cell = sheet.cell(
+                            row, self.product_name_col)
+                        min_product_name = min_product_cell.value
 
-            return min, min_product_name
+                print(min_product_name)
+
+            return min_price, min_product_name
 
         # If user asks for max
         elif decision == 1:
@@ -88,21 +92,23 @@ class Price:
 
                 # if this is the first iteration, make the first value as the maximum
                 if row == self.min_row:
-                    max = cell.value
+                    max_price = cell.value
                     # Makes the product name for the maximum value
                     max_product_cell = sheet.cell(row, self.product_name_col)
                     max_product_name = max_product_cell.value
 
                 else:
                     # sets the new max
-                    new_max = max(max, cell.value)
+                    new_max = max(max_price, cell.value)
 
                     if new_max == cell.value:
-                        max = cell.value
-                    max_product_cell = sheet.cell(row, self.product_name_col)
-                    max_product_name = max_product_cell.value
+                        max_price = cell.value
+                        max_product_cell = sheet.cell(
+                            row, self.product_name_col)
+                        max_product_name = max_product_cell.value
+                print(max_product_name)
 
-            return max, max_product_name
+            return max_price, max_product_name
 
 
 def column_finder(column):

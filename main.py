@@ -39,19 +39,17 @@ if decision == 0:
 
 elif decision == 1:
     percent = float(input(
-        'By what percent do you want to discount the value? (type as a decimal) '))
+        'By what percent do you want to discount the value? (type as a decimal): '))
     discount_file.percentage_discount(percent)
 
 
 min_max_decision = input(
-    "Type 0 if you want to find the min or press 1 to find the max or press enter to end the program ")
+    "Type 0 if you want to find the min or press 1 to find the max or press enter to end the program:\n")
 
 if min_max_decision == '0' or min_max_decision == '1':
-    # min_max, min_max_product = discount_file.min_max_finder(min_max_decision)
     min_max_decision = int(min_max_decision)
-    debug = discount_file.min_max_finder(min_max_decision)
-    print(debug)
-    # print(f"Product: {min_max_product} \nPrice: ${min_max}")
+    min_max, min_max_product = discount_file.min_max_finder(min_max_decision)
+    print(f"Product: {min_max_product} \nPrice: ${min_max}")
 
 print("Done! You can now check your file for the updated prices!")
 print("****************************************\n")
