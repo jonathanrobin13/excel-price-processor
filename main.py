@@ -1,35 +1,35 @@
-import functions as fc
+import excelFunctions as fc
 
-print("********EXCEL-PRICE-PROCESSOR***********")
-
+print("\n********EXCEL-PRICE-PROCESSOR***********")
 print("Welcome to the Excel-Price-Processor!")
-input("Please make sure that your excel file is in this folder (press enter to continue)")
+input("\nPlease make sure that your excel file is in this folder (press enter to continue)")
 input("Please make sure that your excel file is not opened anywhere on your computer currently")
 
 decision = int(input(
-    "Type in 0 if you want to create a fixed discount or 1 for percent discount: "))
+    "\nType in 0 if you want to create a fixed discount or 1 for percent discount: "))
 
 
-file = input('What excel file should be edited? (<file>.xlsx) ')
+file = input('\nWhat excel file should be edited? (<file>.xlsx) ')
 sheet = input('What sheet should be edited? (ex. Sheet1) ')
 
 min_row = int(input(
-    'What is the minimum row of your data that has the prices? '))
+    '\nWhat is the minimum row of your data that has the prices? '))
 max_row = int(input(
     'What is the maximum row of you data that has the prices? '))
-old_col = input(
+original_price_col = input(
     'What is the letter of the old column of your data that has the original prices? ')
-new_col = input(
+discount_price_col = input(
     'What is the letter of the new column of your data that should have the new discounted prices? ')
+product_name_col = input("What column contains the product names? ")
 
-
-old_col = fc.column_finder(old_col)
-new_col = fc.column_finder(new_col)
+product_name_col = fc.column_finder(product_name_col)
+original_price_col = fc.column_finder(original_price_col)
+discount_price_col = fc.column_finder(discount_price_col)
 
 
 # Create a new instance of dicount
-discount_file = fc.Discount(filename=file, sheet_name=sheet, min_row=min_row,
-                            max_row=max_row, old_column=old_col, new_column=new_col)
+discount_file = fc.Price(filename=file, sheet_name=sheet, min_row=min_row,
+                         max_row=max_row, original_price_col=original_price_col, discount_price_col=discount_price_col, product_name_col=product_name_col)
 
 if decision == 0:
     fixed_discount = float(input(
@@ -43,5 +43,15 @@ elif decision == 1:
     discount_file.percentage_discount(percent)
 
 
-print("Done!")
-print("****************************************")
+min_max_decision = input(
+    "Type 0 if you want to find the min or press 1 to find the max or press enter to end the program ")
+
+if min_max_decision == '0' or min_max_decision == '1':
+    # min_max, min_max_product = discount_file.min_max_finder(min_max_decision)
+    min_max_decision = int(min_max_decision)
+    debug = discount_file.min_max_finder(min_max_decision)
+    print(debug)
+    # print(f"Product: {min_max_product} \nPrice: ${min_max}")
+
+print("Done! You can now check your file for the updated prices!")
+print("****************************************\n")
